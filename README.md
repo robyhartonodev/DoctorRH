@@ -12,3 +12,8 @@ Android App for Diagnosis based on user's input
 
 # How to Use
 // TO DO 
+
+# Copyright notice 
+UI
+- https://github.com/Ramotion/paper-onboarding-android
+
