@@ -6,3 +6,9 @@ Android App for Diagnosis based on user's input
 
 # How to Install
 //TO DO
+
+# App Preview
+// TO DO 
+
+# How to Use
+// TO DO 
