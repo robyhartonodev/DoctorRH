@@ -9,15 +9,15 @@ public class WelcomeActivity extends com.stephentuso.welcome.WelcomeActivity {
     protected WelcomeConfiguration configuration() {
         return new WelcomeConfiguration.Builder(this)
                 .defaultBackgroundColor(R.color.background)
-                .page(new TitlePage(R.drawable.ic_healing,
+                .page(new TitlePage(R.drawable.ic_local_hospital,
                         "Title")
                 )
-                .page(new BasicPage(R.drawable.ic_healing,
+                .page(new BasicPage(R.drawable.ic_local_hospital,
                         "Header",
                         "More text.")
                         .background(R.color.red_background)
                 )
-                .page(new BasicPage(R.drawable.ic_healing,
+                .page(new BasicPage(R.drawable.ic_local_hospital,
                         "Lorem ipsum",
                         "dolor sit amet.")
                 )
