@@ -1,15 +1,20 @@
 package com.example.android.doctorrh;
 
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.stephentuso.welcome.WelcomeHelper;
+
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,13 +28,14 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
+        /*fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                //showFabPromptFor(fab);
             }
-        });
+        });*/
 
         welcomeScreen = new WelcomeHelper(this, WelcomeActivity.class);
         welcomeScreen.show(savedInstanceState);
@@ -63,5 +69,30 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void showFabPromptFor(View view)
+    {
+        new MaterialTapTargetPrompt.Builder(MainActivity.this)
+                .setTarget(findViewById(R.id.fab))
+                .setFocalPadding(R.dimen.dp40)
+                .setPrimaryText("showFor(7000)")
+                .setSecondaryText("This prompt will show for 7 seconds")
+                .setAnimationInterpolator(new FastOutSlowInInterpolator())
+                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
+                {
+                    @Override
+                    public void onPromptStateChanged(@NonNull MaterialTapTargetPrompt prompt, int state)
+                    {
+                        if (state == MaterialTapTargetPrompt.STATE_SHOW_FOR_TIMEOUT)
+                        {
+
+                            Toast.makeText(MainActivity.this,
+                                    "Prompt timedout after 7 seconds", Toast.LENGTH_SHORT)
+                                    .show();
+                        }
+                    }
+                })
+                .showFor(7000);
     }
 }
