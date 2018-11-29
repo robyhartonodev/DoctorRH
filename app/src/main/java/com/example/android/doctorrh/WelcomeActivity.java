@@ -8,18 +8,19 @@ public class WelcomeActivity extends com.stephentuso.welcome.WelcomeActivity {
     @Override
     protected WelcomeConfiguration configuration() {
         return new WelcomeConfiguration.Builder(this)
-                .defaultBackgroundColor(R.color.background)
+                .defaultBackgroundColor(R.color.secondaryLightColor)
                 .page(new TitlePage(R.drawable.ic_local_hospital,
                         "Title")
                 )
                 .page(new BasicPage(R.drawable.ic_local_hospital,
                         "Header",
                         "More text.")
-                        .background(R.color.red_background)
+                        .background(R.color.secondaryColor)
                 )
                 .page(new BasicPage(R.drawable.ic_local_hospital,
                         "Lorem ipsum",
                         "dolor sit amet.")
+                        .background(R.color.secondaryDarkColor)
                 )
                 .swipeToDismiss(true)
                 .build();

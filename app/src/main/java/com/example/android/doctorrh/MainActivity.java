@@ -20,7 +20,7 @@ import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 import com.stephentuso.welcome.WelcomeHelper;
 
-import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -87,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
         final Intent yourInfoIntent = new Intent(this, YourInformationActivity.class);
 
         TapTargetView.showFor(this,                 // `this` is an Activity
-                TapTarget.forView(findViewById(R.id.fab), "Diagnosis", "Please give the correct input for the best diagnosis! " +
-                        "\n Press the button again to proceed")
+                TapTarget.forView(findViewById(R.id.fab), "Diagnosis", "Give correct inputs for the best result!" +
+                        "\n\nPress the button again to proceed")
                         // All options below are optional
-                        .outerCircleColor(R.color.redTarget)      // Specify a color for the outer circle
+                        .outerCircleColor(R.color.secondaryColor)      // Specify a color for the outer circle
                         .outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
                         .targetCircleColor(R.color.whiteTarget)   // Specify a color for the target circle
                         .titleTextSize(30)                  // Specify the size (in sp) of the title text

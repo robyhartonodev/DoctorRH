@@ -17,7 +17,7 @@
     <color name="red_background">#830015</color>
 
     <color name="border_image_selected">#2AC940</color>
-    <color name="border_image_deselected">#EEEEEE</color>
+    <color name="border_image_deselected">#FFFFFF</color>
 
     <!--Color For TapTargetPrompt -->
     <color name="redTarget">#990000</color>

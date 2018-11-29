@@ -65,8 +65,9 @@
                                     <map>
                                       <entry key="assetType" value="IMAGE" />
                                       <entry key="cropped" value="true" />
-                                      <entry key="imageAsset" value="C:\Users\krappa\Downloads\icons8-person-female-64.png" />
-                                      <entry key="outputName" value="ic_female" />
+                                      <entry key="iconShape" value="CIRCLE" />
+                                      <entry key="imageAsset" value="C:\Users\krappa\Downloads\iconfinder_aiga_toilet_men_bg_134158.png" />
+                                      <entry key="outputName" value="ic_male" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -76,7 +77,7 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="outputIconType" value="ACTIONBAR" />
+                            <entry key="outputIconType" value="LAUNCHER_LEGACY" />
                           </map>
                         </option>
                       </PersistentState>
