@@ -1,5 +1,6 @@
 package com.example.android.doctorrh;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
@@ -71,13 +72,17 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void showFabPromptFor(View view)
+    public void showYourInfoFab(View view)
     {
+        // Create Intent to go to YourInformationActivity
+        final Intent yourInfoIntent = new Intent(this, YourInformationActivity.class);
+
+
         new MaterialTapTargetPrompt.Builder(MainActivity.this)
                 .setTarget(findViewById(R.id.fab))
                 .setFocalPadding(R.dimen.dp40)
-                .setPrimaryText("showFor(7000)")
-                .setSecondaryText("This prompt will show for 7 seconds")
+                .setPrimaryText("You have pressed the button for check up")
+                .setSecondaryText("Make sure to give correct inputs for the best diagnosis")
                 .setAnimationInterpolator(new FastOutSlowInInterpolator())
                 .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
                 {
@@ -86,13 +91,13 @@ public class MainActivity extends AppCompatActivity {
                     {
                         if (state == MaterialTapTargetPrompt.STATE_SHOW_FOR_TIMEOUT)
                         {
-
-                            Toast.makeText(MainActivity.this,
-                                    "Prompt timedout after 7 seconds", Toast.LENGTH_SHORT)
-                                    .show();
+                            //Start the Activity
+                            startActivity(yourInfoIntent);
                         }
                     }
                 })
-                .showFor(7000);
+                .showFor(5000);
+
+
     }
 }
