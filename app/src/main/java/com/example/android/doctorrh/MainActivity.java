@@ -1,10 +1,13 @@
 package com.example.android.doctorrh;
 
+import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.FastOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,6 +16,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.stephentuso.welcome.WelcomeHelper;
 
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt;
@@ -65,39 +70,51 @@ public class MainActivity extends AppCompatActivity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
-        }else if(id == R.id.action_tutorial){
+        } else if (id == R.id.action_tutorial) {
             welcomeScreen.forceShow();
         }
 
         return super.onOptionsItemSelected(item);
     }
 
-    public void showYourInfoFab(View view)
-    {
+    /**
+     * This button set the TapTarget Animation on FloatingActionButton
+     *
+     * @param view
+     */
+    public void showInfoTap(View view) {
         // Create Intent to go to YourInformationActivity
         final Intent yourInfoIntent = new Intent(this, YourInformationActivity.class);
 
-
-        new MaterialTapTargetPrompt.Builder(MainActivity.this)
-                .setTarget(findViewById(R.id.fab))
-                .setFocalPadding(R.dimen.dp40)
-                .setPrimaryText("You have pressed the button for check up")
-                .setSecondaryText("Make sure to give correct inputs for the best diagnosis")
-                .setAnimationInterpolator(new FastOutSlowInInterpolator())
-                .setPromptStateChangeListener(new MaterialTapTargetPrompt.PromptStateChangeListener()
-                {
+        TapTargetView.showFor(this,                 // `this` is an Activity
+                TapTarget.forView(findViewById(R.id.fab), "Diagnosis", "Please give the correct input for the best diagnosis! " +
+                        "\n Press the button again to proceed")
+                        // All options below are optional
+                        .outerCircleColor(R.color.redTarget)      // Specify a color for the outer circle
+                        .outerCircleAlpha(0.96f)            // Specify the alpha amount for the outer circle
+                        .targetCircleColor(R.color.whiteTarget)   // Specify a color for the target circle
+                        .titleTextSize(30)                  // Specify the size (in sp) of the title text
+                        .titleTextColor(R.color.whiteTarget)      // Specify the color of the title text
+                        .descriptionTextSize(15)            // Specify the size (in sp) of the description text
+                        .descriptionTextColor(R.color.redTarget)  // Specify the color of the description text
+                        .textColor(R.color.whiteTarget)            // Specify a color for both the title and description text
+                        .textTypeface(Typeface.SANS_SERIF)  // Specify a typeface for the text
+                        .dimColor(R.color.blackTarget)            // If set, will dim behind the view with 30% opacity of the given color
+                        .drawShadow(true)                   // Whether to draw a drop shadow or not
+                        .cancelable(true)                  // Whether tapping outside the outer circle dismisses the view
+                        .tintTarget(true)                   // Whether to tint the target view's color
+                        .transparentTarget(false)           // Specify whether the target is transparent (displays the content underneath)
+                        .icon(ContextCompat.getDrawable(view.getContext(), R.drawable.ic_stethoscope))          // Specify a custom drawable to draw as the target
+                        .targetRadius(60),                  // Specify the target radius (in dp)
+                new TapTargetView.Listener() {          // The listener can listen for regular clicks, long clicks or cancels
                     @Override
-                    public void onPromptStateChanged(@NonNull MaterialTapTargetPrompt prompt, int state)
-                    {
-                        if (state == MaterialTapTargetPrompt.STATE_SHOW_FOR_TIMEOUT)
-                        {
-                            //Start the Activity
-                            startActivity(yourInfoIntent);
-                        }
+                    public void onTargetClick(TapTargetView view) {
+                        super.onTargetClick(view);      // This call is optional
+
+                        //Start Activity
+                        startActivity(yourInfoIntent);
+
                     }
-                })
-                .showFor(5000);
-
-
+                });
     }
 }
