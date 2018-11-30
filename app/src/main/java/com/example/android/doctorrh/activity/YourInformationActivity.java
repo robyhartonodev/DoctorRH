@@ -1,4 +1,4 @@
-package com.example.android.doctorrh;
+package com.example.android.doctorrh.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.android.doctorrh.R;
 import com.getkeepsafe.taptargetview.TapTarget;
 import com.getkeepsafe.taptargetview.TapTargetView;
 
@@ -165,7 +166,7 @@ public class YourInformationActivity extends AppCompatActivity {
      */
     public void showUserInputTap(View view) {
         // Create Intent to go to YourInformationActivity
-        final Intent symptompIntent = new Intent(this, SymtompActivity.class);
+        final Intent symptomIntent = new Intent(this, SymptomActivity.class);
 
         TapTargetView.showFor(this,                 // `this` is an Activity
                 TapTarget.forView(findViewById(R.id.submit_fab), "Are You Sure?", "Make sure your inputs are correct" +
@@ -196,7 +197,7 @@ public class YourInformationActivity extends AppCompatActivity {
                         // If User has choosen the gender, then user will proceed to next activity
                         if (genderChoiceSelected && userSetAge) {
                             //Start Activity
-                            startActivity(symptompIntent);
+                            startActivity(symptomIntent);
                         } else {
                             Toast.makeText(view.getContext(), "Failed! Make sure to set Age and select Gender",
                                     Toast.LENGTH_LONG).show();

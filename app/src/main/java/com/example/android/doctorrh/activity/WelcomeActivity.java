@@ -1,5 +1,6 @@
-package com.example.android.doctorrh;
+package com.example.android.doctorrh.activity;
 
+import com.example.android.doctorrh.R;
 import com.stephentuso.welcome.BasicPage;
 import com.stephentuso.welcome.TitlePage;
 import com.stephentuso.welcome.WelcomeConfiguration;

@@ -1,4 +1,4 @@
-package com.example.android.doctorrh;
+package com.example.android.doctorrh.fragment;
 
 
 import android.app.DatePickerDialog;
