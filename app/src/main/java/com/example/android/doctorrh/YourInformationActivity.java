@@ -165,7 +165,7 @@ public class YourInformationActivity extends AppCompatActivity {
      */
     public void showUserInputTap(View view) {
         // Create Intent to go to YourInformationActivity
-        final Intent yourInfoIntent = new Intent(this, YourInformationActivity.class);
+        final Intent symptompIntent = new Intent(this, SymtompActivity.class);
 
         TapTargetView.showFor(this,                 // `this` is an Activity
                 TapTarget.forView(findViewById(R.id.submit_fab), "Are You Sure?", "Make sure your inputs are correct" +
@@ -196,7 +196,7 @@ public class YourInformationActivity extends AppCompatActivity {
                         // If User has choosen the gender, then user will proceed to next activity
                         if (genderChoiceSelected && userSetAge) {
                             //Start Activity
-                            startActivity(yourInfoIntent);
+                            startActivity(symptompIntent);
                         } else {
                             Toast.makeText(view.getContext(), "Failed! Make sure to set Age and select Gender",
                                     Toast.LENGTH_LONG).show();
